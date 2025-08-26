@@ -78,9 +78,9 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: PlayWrite
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/PlaywriteAUSA-Thin.ttf
-        - asset: assets/fonts/PlaywriteAUSA-ExtraLight.ttf
-        - asset: assets/fonts/PlaywriteAUSA-Light.ttf
-        - asset: assets/fonts/PlaywriteAUSA-Regular.ttf
+        - asset: assets/fonts/Roboto-Light.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Thin.ttf

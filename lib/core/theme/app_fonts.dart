@@ -1,3 +1,3 @@
 class AppFonts {
-  static const String fontFamily = 'PlayWrite';
+  static const String fontFamily = 'Roboto';
 }

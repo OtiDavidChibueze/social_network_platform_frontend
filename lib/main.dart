@@ -11,6 +11,7 @@ void main() async {
 
   runApp(
     MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.getTheme(),
       routerConfig: AppRouter.router,
     ),
