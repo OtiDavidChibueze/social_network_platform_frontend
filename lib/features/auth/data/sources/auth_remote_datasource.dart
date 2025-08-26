@@ -16,6 +16,8 @@ class AuthRepositorySourceImpl implements AuthRemoteDataSource {
     try {
       final response = await dio.post('users/auth', data: {"token": token});
 
+      print(response);
+
       return UserEntity.fromJson(response.data);
     } catch (e) {
       throw ServerException(message: e.toString(), trace: null);
