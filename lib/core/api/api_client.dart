@@ -8,7 +8,7 @@ class ApiClient {
   Dio getDio({bool tokenInterceptor = false}) {
     final dio = Dio(
       BaseOptions(
-        baseUrl: "${ApiConfig.baseUrl}api/", // your hotspot IP + port
+        baseUrl: "${ApiConfig.baseUrl}api/",
         connectTimeout: const Duration(seconds: 20),
         receiveTimeout: const Duration(seconds: 20),
       ),
