@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-/// Interceptor that attaches Firebase ID tokens to requests and retries on 401.
 class TokenInterception extends Interceptor {
   final Dio dio;
   final FirebaseAuth firebaseAuth;
