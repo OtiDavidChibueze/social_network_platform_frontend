@@ -4,7 +4,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:social_network_platform/core/error/failure.dart';
 import 'package:social_network_platform/core/error/server_exception.dart';
-import 'package:social_network_platform/features/auth/data/sources/auth_remote_datasource.dart';
+import 'package:social_network_platform/features/auth/data/dataSources/auth_remote_datasource.dart';
 import 'package:social_network_platform/features/auth/domain/entities/user_entity.dart';
 import 'package:social_network_platform/features/auth/domain/repository/auth_repository.dart';
 

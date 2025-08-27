@@ -2,8 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:social_network_platform/core/api/api_client.dart';
 import 'package:social_network_platform/features/auth/data/repository/auth_repository_impl.dart';
-import 'package:social_network_platform/features/auth/data/sources/auth_remote_datasource.dart';
+import 'package:social_network_platform/features/auth/data/dataSources/auth_remote_datasource.dart';
 import 'package:social_network_platform/features/auth/domain/repository/auth_repository.dart';
 import 'package:social_network_platform/features/auth/domain/usecases/sign_in_with_google_entity.dart';
 import 'package:social_network_platform/features/auth/presentation/bloc/user_bloc.dart';
@@ -11,7 +12,10 @@ import 'package:social_network_platform/features/auth/presentation/bloc/user_blo
 GetIt getIt = GetIt.I;
 
 void setLocator() {
-  getIt.registerLazySingleton(() => Dio());
+  getIt.registerLazySingleton<Dio>(
+    () => ApiClient().getDio(tokenInterceptor: true),
+  );
+
   getIt.registerLazySingleton(() => GoogleSignIn());
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
