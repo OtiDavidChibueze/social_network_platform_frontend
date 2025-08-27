@@ -8,7 +8,7 @@ import 'package:social_network_platform/features/auth/presentation/bloc/user_sta
 import 'package:social_network_platform/main/presentation/pages/main_page.dart';
 
 class AuthPage extends StatelessWidget {
-  static const String routeName = '/auth';
+  static const String route = '/auth';
   const AuthPage({super.key});
 
   @override
@@ -17,7 +17,7 @@ class AuthPage extends StatelessWidget {
       body: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
           if (state.status == UserStatus.success) {
-            context.goNamed(MainPage.routeName);
+            context.go(MainPage.route);
           }
 
           if (state.status == UserStatus.error) {

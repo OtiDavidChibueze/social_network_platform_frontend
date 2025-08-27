@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
-  static const String routeName = '/main';
+  static const String route = '/main';
 
   const MainPage({super.key});
 

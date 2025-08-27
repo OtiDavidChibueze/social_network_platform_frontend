@@ -4,17 +4,17 @@ import 'package:social_network_platform/main/presentation/pages/main_page.dart';
 
 class AppRouter {
   static var router = GoRouter(
-    initialLocation: AuthPage.routeName,
+    initialLocation: AuthPage.route,
     routes: [
       GoRoute(
-        path: AuthPage.routeName,
+        path: AuthPage.route,
         builder: (context, state) {
           return AuthPage();
         },
       ),
 
       GoRoute(
-        path: MainPage.routeName,
+        path: MainPage.route,
         builder: (context, state) {
           return MainPage();
         },
