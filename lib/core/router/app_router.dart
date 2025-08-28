@@ -1,10 +1,12 @@
 import 'package:go_router/go_router.dart';
-import 'package:social_network_platform/features/auth/presentation/pages/auth_page.dart';
-import 'package:social_network_platform/main/presentation/pages/main_page.dart';
+import '../../features/Splash/presentation/pages/splash_page.dart';
+import '../../features/auth/presentation/pages/auth_page.dart';
+import '../../features/main/presentation/pages/main_page.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
 
 class AppRouter {
   static var router = GoRouter(
-    initialLocation: AuthPage.route,
+    initialLocation: SplashPage.route,
     routes: [
       GoRoute(
         path: AuthPage.route,
@@ -17,6 +19,20 @@ class AppRouter {
         path: MainPage.route,
         builder: (context, state) {
           return MainPage();
+        },
+      ),
+
+      GoRoute(
+        path: SplashPage.route,
+        builder: (context, state) {
+          return SplashPage();
+        },
+      ),
+
+      GoRoute(
+        path: ProfilePage.route,
+        builder: (context, state) {
+          return ProfilePage();
         },
       ),
     ],

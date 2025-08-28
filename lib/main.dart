@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_network_platform/core/di/locator.dart';
-import 'package:social_network_platform/features/auth/presentation/bloc/user_bloc.dart';
-import 'package:social_network_platform/firebase_options.dart';
-import './app.dart';
+import 'core/di/locator.dart';
+import 'features/auth/presentation/bloc/user_bloc.dart';
+import 'features/auth/presentation/bloc/user_event.dart';
+import 'firebase_options.dart';
+import 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +16,9 @@ void main() async {
 
   runApp(
     MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => getIt<UserBloc>())],
+      providers: [
+        BlocProvider(create: (_) => getIt<UserBloc>()..add(GetUserEvent())),
+      ],
       child: const MyApp(),
     ),
   );

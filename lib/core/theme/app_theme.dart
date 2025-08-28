@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_network_platform/core/theme/app_colors.dart';
-import 'package:social_network_platform/core/theme/app_fonts.dart';
+import 'app_colors.dart';
+import 'app_fonts.dart';
 
 class AppTheme {
   static ThemeData getTheme() {

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:social_network_platform/core/api/api_config.dart';
-import 'package:social_network_platform/core/api/token/token_interception.dart';
+import 'api_config.dart';
+import 'token/token_interception.dart';
 
 class ApiClient {
   Dio getDio({bool tokenInterceptor = false}) {

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:social_network_platform/features/auth/domain/entities/user_entity.dart';
+import '../../domain/entities/user_entity.dart';
 
 enum UserStatus { initial, loading, success, error, logout }
 

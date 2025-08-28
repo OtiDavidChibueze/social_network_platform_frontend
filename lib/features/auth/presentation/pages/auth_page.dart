@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:social_network_platform/core/constants/app_image_urls.dart';
-import 'package:social_network_platform/features/auth/presentation/bloc/user_bloc.dart';
-import 'package:social_network_platform/features/auth/presentation/bloc/user_event.dart';
-import 'package:social_network_platform/features/auth/presentation/bloc/user_state.dart';
-import 'package:social_network_platform/main/presentation/pages/main_page.dart';
+import '../../../../core/constants/app_image_urls.dart';
+import '../bloc/user_bloc.dart';
+import '../bloc/user_event.dart';
+import '../bloc/user_state.dart';
+import '../../../main/presentation/pages/main_page.dart';
 
 class AuthPage extends StatelessWidget {
   static const String route = '/auth';

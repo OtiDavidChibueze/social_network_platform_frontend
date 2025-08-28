@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:social_network_platform/core/error/server_exception.dart';
-import 'package:social_network_platform/features/auth/domain/entities/user_entity.dart';
+import '../../../../core/error/server_exception.dart';
+import '../../domain/entities/user_entity.dart';
 
 abstract interface class AuthRemoteDataSource {
   Future<UserEntity> signInWithGoogle(String token);
@@ -14,9 +14,9 @@ class AuthRepositorySourceImpl implements AuthRemoteDataSource {
   @override
   Future<UserEntity> signInWithGoogle(String token) async {
     try {
-      final response = await dio.post('users/auth', data: {"token": token});
+      final request = await dio.post('users/auth', data: {"token": token});
 
-      return UserEntity.fromJson(response.data);
+      return UserEntity.fromJson(request.data);
     } catch (e) {
       throw ServerException(message: e.toString(), trace: null);
     }
