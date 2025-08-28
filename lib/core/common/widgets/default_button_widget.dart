@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DefaultButton extends StatelessWidget {
+class DefaultButtonWidget extends StatelessWidget {
   final String? text;
   final Color? backgroundColor;
   final Color? textColor;
   final VoidCallback? onPressed;
   final EdgeInsets? padding;
 
-  const DefaultButton({
+  const DefaultButtonWidget({
     super.key,
     this.text,
     this.backgroundColor,

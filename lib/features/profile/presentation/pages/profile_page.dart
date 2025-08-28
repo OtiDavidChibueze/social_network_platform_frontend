@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_network_platform/core/common/widgets/default_show_modal_bottom_sheet_widget.dart';
+import 'package:social_network_platform/features/auth/presentation/bloc/user_bloc.dart';
+import 'package:social_network_platform/features/auth/presentation/bloc/user_state.dart';
+import 'package:social_network_platform/features/profile/presentation/widgets/circle_user_avatar_widget.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String route = '/profile';
@@ -6,6 +11,114 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Profile',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return DefaultShowModalBottomSheetWidget(
+                        elements: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.edit,
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
+                            title: Text('Edit profile'),
+                            onTap: () {},
+                          ),
+
+                          ListTile(
+                            leading: Icon(
+                              Icons.logout,
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                            title: Text('Sign out'),
+                            onTap: () {},
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                icon: const Icon(Icons.more_vert),
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ],
+          ),
+
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      CircleUserAvatarWidget(
+                        height: 100,
+                        width: 100,
+                        url: state.user?.avatar,
+                      ),
+
+                      SizedBox(width: 15),
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${state.user?.name}',
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                          Text(
+                            '${state.user?.email}',
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface.withValues(alpha: .8),
+                                ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 10),
+
+                  Text(
+                    state.user?.bio ?? '',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: .8),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
