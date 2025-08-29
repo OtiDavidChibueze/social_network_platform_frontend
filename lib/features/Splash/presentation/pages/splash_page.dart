@@ -16,7 +16,7 @@ class SplashPage extends StatelessWidget {
     return BlocListener<UserBloc, UserState>(
       listener: (context, state) {
         if (state.status == UserStatus.success) {
-          context.go(MainPage.route);
+          context.go(ProfilePage.route);
         }
 
         if (state.status == UserStatus.error) {
