@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_network_platform/core/common/widgets/default_show_modal_bottom_sheet_widget.dart';
-import 'package:social_network_platform/features/auth/presentation/bloc/user_bloc.dart';
-import 'package:social_network_platform/features/auth/presentation/bloc/user_state.dart';
-import 'package:social_network_platform/features/profile/presentation/widgets/circle_user_avatar_widget.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/common/widgets/default_show_modal_bottom_sheet_widget.dart';
+import '../../../auth/presentation/bloc/user_bloc.dart';
+import '../../../auth/presentation/bloc/user_event.dart';
+import '../../../auth/presentation/bloc/user_state.dart';
+import 'edit_profile_page.dart';
+import '../widgets/circle_user_avatar_widget.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String route = '/profile';
@@ -36,7 +39,9 @@ class ProfilePage extends StatelessWidget {
                               color: Theme.of(context).colorScheme.onSurface,
                             ),
                             title: Text('Edit profile'),
-                            onTap: () {},
+                            onTap: () {
+                              context.push(EditProfilePage.route);
+                            },
                           ),
 
                           ListTile(
@@ -44,8 +49,15 @@ class ProfilePage extends StatelessWidget {
                               Icons.logout,
                               color: Theme.of(context).colorScheme.error,
                             ),
-                            title: Text('Sign out'),
-                            onTap: () {},
+                            title: Text(
+                              'Sign out',
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.error,
+                              ),
+                            ),
+                            onTap: () {
+                              context.read<UserBloc>().add(LogOutEvent());
+                            },
                           ),
                         ],
                       );

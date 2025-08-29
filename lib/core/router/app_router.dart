@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import '../../features/Splash/presentation/pages/splash_page.dart';
 import '../../features/auth/presentation/pages/auth_page.dart';
 import '../../features/main/presentation/pages/main_page.dart';
@@ -33,6 +34,13 @@ class AppRouter {
         path: ProfilePage.route,
         builder: (context, state) {
           return ProfilePage();
+        },
+      ),
+
+      GoRoute(
+        path: EditProfilePage.route,
+        builder: (context, state) {
+          return EditProfilePage();
         },
       ),
     ],

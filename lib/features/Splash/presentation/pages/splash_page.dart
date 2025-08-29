@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:social_network_platform/features/auth/presentation/pages/auth_page.dart';
 import '../../../auth/presentation/bloc/user_bloc.dart';
 import '../../../auth/presentation/bloc/user_state.dart';
 import '../../../main/presentation/pages/main_page.dart';
@@ -15,7 +16,11 @@ class SplashPage extends StatelessWidget {
     return BlocListener<UserBloc, UserState>(
       listener: (context, state) {
         if (state.status == UserStatus.success) {
-          context.go(ProfilePage.route);
+          context.go(MainPage.route);
+        }
+
+        if (state.status == UserStatus.error) {
+          context.go(AuthPage.route);
         }
       },
       child: Scaffold(

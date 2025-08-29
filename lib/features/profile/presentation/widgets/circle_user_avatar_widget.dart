@@ -15,7 +15,10 @@ class CircleUserAvatarWidget extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        image: DecorationImage(image: CachedNetworkImageProvider(url ?? '')),
+        image: DecorationImage(
+          image: CachedNetworkImageProvider(url ?? ''),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

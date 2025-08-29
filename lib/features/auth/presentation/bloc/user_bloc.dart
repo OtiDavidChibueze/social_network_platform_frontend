@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/usecases/params.dart';
 import '../../domain/usecases/get_user_usecase.dart';
+import '../../domain/usecases/log_out_usecase.dart';
 import '../../domain/usecases/sign_in_with_google_usecase.dart';
 import 'user_event.dart';
 import 'user_state.dart';
@@ -8,21 +10,27 @@ import 'user_state.dart';
 class UserBloc extends Bloc<UserEvent, UserState> {
   final SignInWithGoogleUsecase _signInWithGoogleUsecase;
   final GetUserUsecase _getUserUsecase;
+  final LogOutUsecase _logOutUsecase;
 
   UserBloc({
     required SignInWithGoogleUsecase signInWithGoogleUsecase,
     required GetUserUsecase getUserUsecase,
+    required LogOutUsecase logOutUsecase,
   }) : _signInWithGoogleUsecase = signInWithGoogleUsecase,
        _getUserUsecase = getUserUsecase,
+       _logOutUsecase = logOutUsecase,
        super(UserState.initial()) {
     on<SignInWithGoogleEvent>(_onSignInWithGoogleEvent);
     on<GetUserEvent>(_onGetUserEvent);
+    on<LogOutEvent>(_onLogOutEvent);
   }
 
   Future<void> _onSignInWithGoogleEvent(
     SignInWithGoogleEvent event,
     Emitter<UserState> emit,
   ) async {
+    emit(state.copyWith(status: UserStatus.loading));
+
     final res = await _signInWithGoogleUsecase(NoParams());
 
     res.fold(
@@ -43,10 +51,28 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
     result.fold(
       (l) {
-        state.copyWith(status: UserStatus.error, errorMessage: l.message);
+        emit(state.copyWith(status: UserStatus.error, errorMessage: l.message));
       },
       (r) {
         emit(state.copyWith(status: UserStatus.success, user: r));
+      },
+    );
+  }
+
+  Future<void> _onLogOutEvent(
+    LogOutEvent event,
+    Emitter<UserState> emit,
+  ) async {
+    emit(state.copyWith(status: UserStatus.loading));
+
+    final result = await _logOutUsecase(NoParams());
+
+    result.fold(
+      (l) {
+        emit(state.copyWith(status: UserStatus.error, errorMessage: l.message));
+      },
+      (r) {
+        emit(state.copyWith(status: UserStatus.logout));
       },
     );
   }
