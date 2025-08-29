@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
@@ -41,4 +43,17 @@ class UserRepositoryImpl implements UserRepository {
       return (Left(Failure(message: e.toString(), trace: null)));
     }
   }
+
+  // @override
+  // Future<Either<Failure, void>> editUser({
+  //   required String name,
+  //   required String bio,
+  //   File? avatar,
+  // }) async {
+  //   try {} on ServerException catch (e) {
+  //     return (Left(Failure(message: e.message, trace: e.trace)));
+  //   } catch (e) {
+  //     return (Left(Failure(message: e.toString(), trace: null)));
+  //   }
+  // }
 }
