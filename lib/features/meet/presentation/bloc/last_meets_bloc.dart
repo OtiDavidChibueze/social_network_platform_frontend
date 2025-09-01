@@ -44,6 +44,8 @@ class LastMeetsBloc extends Bloc<LastMeetsEvent, LastMeetsState> {
           state.copyWith(
             status: LastMeetsStatus.success,
             lastMeets: [...(state.lastMeets ?? []), ...r],
+            currentPage: state.currentPage,
+            isLastPage: r.length < 10,
           ),
         );
       },
