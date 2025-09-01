@@ -40,6 +40,7 @@ class ProfilePage extends StatelessWidget {
                             ),
                             title: Text('Edit profile'),
                             onTap: () {
+                              context.pop();
                               context.push(EditProfilePage.route);
                             },
                           ),
@@ -125,6 +126,15 @@ class ProfilePage extends StatelessWidget {
                       ).colorScheme.onSurface.withValues(alpha: .8),
                     ),
                   ),
+
+                  SizedBox(height: 20),
+
+                  Text(
+                    'Last meets',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+
+                  SizedBox(height: 10),
                 ],
               ),
             ),
