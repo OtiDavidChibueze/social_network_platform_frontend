@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/last_meets_bloc.dart';
 import '../bloc/last_meets_state.dart';
-import '../widgets/last_meets_widget.dart';
 
 class LastMeetsSection extends StatelessWidget {
   const LastMeetsSection({super.key});
@@ -15,7 +14,7 @@ class LastMeetsSection extends StatelessWidget {
           itemCount: 3,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return LastMeetsWidget();
+            return null;
           },
         );
       },
