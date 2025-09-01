@@ -1,9 +1,9 @@
 import 'package:fpdart/src/either.dart';
-import 'package:social_network_platform/core/error/failure.dart';
-import 'package:social_network_platform/core/error/server_exception.dart';
-import 'package:social_network_platform/features/meet/data/datasource/meet_remote_datasource.dart';
-import 'package:social_network_platform/features/meet/domain/entities/meet_entity.dart';
-import 'package:social_network_platform/features/meet/domain/repository/meet_repository.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/error/server_exception.dart';
+import '../datasource/meet_remote_datasource.dart';
+import '../../domain/entities/meet_entity.dart';
+import '../../domain/repository/meet_repository.dart';
 
 class MeetRepositoryImpl implements MeetRepository {
   final MeetRemoteDatasource meetRemoteDatasource;

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:social_network_platform/features/auth/domain/entities/user_entity.dart';
+import '../../../auth/domain/entities/user_entity.dart';
 part 'meet_entity.g.dart';
 
 @JsonSerializable()

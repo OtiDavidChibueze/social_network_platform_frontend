@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_network_platform/features/auth/domain/usecases/edit_user_usecase.dart';
+import '../../domain/usecases/edit_user_usecase.dart';
 
 import '../../../../core/usecases/params.dart';
 import '../../domain/usecases/get_user_usecase.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_network_platform/features/meet/domain/usecases/get_last_meet_usecase.dart';
-import 'package:social_network_platform/features/meet/presentation/bloc/last_meets_event.dart';
-import 'package:social_network_platform/features/meet/presentation/bloc/last_meets_state.dart';
+import '../../domain/usecases/get_last_meet_usecase.dart';
+import 'last_meets_event.dart';
+import 'last_meets_state.dart';
 
 class LastMeetsBloc extends Bloc<LastMeetsEvent, LastMeetsState> {
   final GetLastMeetsUsecase _getLastMeetsUsecase;

@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:social_network_platform/core/error/failure.dart';
-import 'package:social_network_platform/core/usecases/use_case.dart';
-import 'package:social_network_platform/features/auth/domain/repository/user_repository.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/usecases/use_case.dart';
+import '../repository/user_repository.dart';
 
 class EditUserUsecase implements UseCase<Failure, void, EditUserParams> {
   final UserRepository userRepository;

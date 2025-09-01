@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:social_network_platform/features/auth/presentation/pages/auth_page.dart';
+import '../../../auth/presentation/pages/auth_page.dart';
 import '../../../auth/presentation/bloc/user_bloc.dart';
 import '../../../auth/presentation/bloc/user_state.dart';
-import '../../../main/presentation/pages/main_page.dart';
 import '../../../profile/presentation/pages/profile_page.dart';
 
 class SplashPage extends StatelessWidget {

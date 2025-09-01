@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:social_network_platform/core/error/failure.dart';
-import 'package:social_network_platform/features/meet/domain/entities/meet_entity.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/meet_entity.dart';
 
 abstract interface class MeetRepository {
   Future<Either<Failure, List<MeetEntity>>> getLastMeets({

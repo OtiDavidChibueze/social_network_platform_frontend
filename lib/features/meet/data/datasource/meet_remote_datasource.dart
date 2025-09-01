@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart' show Dio;
-import 'package:social_network_platform/core/error/server_exception.dart';
-import 'package:social_network_platform/features/meet/domain/entities/meet_entity.dart';
+import '../../../../core/error/server_exception.dart';
+import '../../domain/entities/meet_entity.dart';
 
 abstract interface class MeetRemoteDatasource {
   Future<List<MeetEntity>> getLastMeets({int? limit, int? page});
@@ -15,7 +15,7 @@ class MeetRemoteDatasourceImpl implements MeetRemoteDatasource {
   Future<List<MeetEntity>> getLastMeets({int? limit, int? page}) async {
     try {
       final request = await dio.get(
-        'users/meets',
+        'meetings/past',
         queryParameters: {'limit': limit, 'page': page},
       );
 
