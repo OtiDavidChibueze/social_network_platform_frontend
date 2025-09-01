@@ -7,6 +7,18 @@ class CreateMeetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Create Meet',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+      ),
+
+      body: SingleChildScrollView(child: Column(children: [
+            
+          ],
+        )),
+    );
   }
 }
