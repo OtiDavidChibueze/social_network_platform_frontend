@@ -37,23 +37,42 @@ class UserRepositoryImpl implements UserRepository {
       await _firebaseAuth.signOut();
 
       return Right(null);
-    } on DioException catch (e) {
-      return (Left(Failure(message: e.response?.data['message'], trace: null)));
+    } on DioException catch (e, stack) {
+      return Left(
+        Failure(
+          message: 'Dio error: ${e.response?.statusCode} ${e.message}',
+          trace: stack,
+        ),
+      );
     } on ServerException catch (e) {
       return (Left(Failure(message: e.toString(), trace: null)));
     }
   }
 
-  // @override
-  // Future<Either<Failure, void>> editUser({
-  //   required String name,
-  //   required String bio,
-  //   File? avatar,
-  // }) async {
-  //   try {} on ServerException catch (e) {
-  //     return (Left(Failure(message: e.message, trace: e.trace)));
-  //   } catch (e) {
-  //     return (Left(Failure(message: e.toString(), trace: null)));
-  //   }
-  // }
+  @override
+  Future<Either<Failure, void>> editUser({
+    required String name,
+    required String bio,
+    File? avatar,
+  }) async {
+    try {
+      if (avatar != null) {
+        await userRemoteDataSource.uploadAvatar(avatar: avatar);
+      }
+
+      await userRemoteDataSource.editUser(name: name, bio: bio);
+      return const Right(null);
+    } on DioException catch (e, stack) {
+      return Left(
+        Failure(
+          message: 'Dio error: ${e.response?.statusCode} ${e.message}',
+          trace: stack,
+        ),
+      );
+    } on ServerException catch (e) {
+      return Left(Failure(message: e.message, trace: e.trace));
+    } catch (e, stack) {
+      return Left(Failure(message: e.toString(), trace: stack));
+    }
+  }
 }

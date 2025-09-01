@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_network_platform/features/auth/domain/usecases/edit_user_usecase.dart';
 
 import '../../../../core/usecases/params.dart';
 import '../../domain/usecases/get_user_usecase.dart';
@@ -11,18 +12,22 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final SignInWithGoogleUsecase _signInWithGoogleUsecase;
   final GetUserUsecase _getUserUsecase;
   final LogOutUsecase _logOutUsecase;
+  final EditUserUsecase _editUserUsecase;
 
   UserBloc({
     required SignInWithGoogleUsecase signInWithGoogleUsecase,
     required GetUserUsecase getUserUsecase,
     required LogOutUsecase logOutUsecase,
+    required EditUserUsecase editUserUsecase,
   }) : _signInWithGoogleUsecase = signInWithGoogleUsecase,
        _getUserUsecase = getUserUsecase,
        _logOutUsecase = logOutUsecase,
+       _editUserUsecase = editUserUsecase,
        super(UserState.initial()) {
     on<SignInWithGoogleEvent>(_onSignInWithGoogleEvent);
     on<GetUserEvent>(_onGetUserEvent);
     on<LogOutEvent>(_onLogOutEvent);
+    on<EditUserEvent>(_onEditUserEvent);
   }
 
   Future<void> _onSignInWithGoogleEvent(
@@ -73,6 +78,26 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       },
       (r) {
         emit(state.copyWith(status: UserStatus.logout));
+      },
+    );
+  }
+
+  Future<void> _onEditUserEvent(
+    EditUserEvent event,
+    Emitter<UserState> emit,
+  ) async {
+    emit(state.copyWith(status: UserStatus.loading));
+
+    final result = await _editUserUsecase(
+      EditUserParams(name: event.name, bio: event.bio, avatar: event.avatar),
+    );
+
+    result.fold(
+      (l) {
+        emit(state.copyWith(status: UserStatus.error, errorMessage: l.message));
+      },
+      (r) {
+        add(GetUserEvent());
       },
     );
   }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:social_network_platform/features/auth/domain/usecases/edit_user_usecase.dart';
 import '../../features/auth/domain/usecases/log_out_usecase.dart';
 import '../api/api_client.dart';
 import '../../features/auth/data/dataSources/user_remote_datasource.dart';
@@ -47,6 +48,7 @@ _setAuth() {
         signInWithGoogleUsecase: getIt(),
         getUserUsecase: getIt(),
         logOutUsecase: getIt(),
+        editUserUsecase: getIt(),
       ),
     );
 }
@@ -63,5 +65,6 @@ _setUser() {
       ),
     )
     ..registerFactory(() => GetUserUsecase(userRepository: getIt()))
-    ..registerFactory(() => LogOutUsecase(userRepository: getIt()));
+    ..registerFactory(() => LogOutUsecase(userRepository: getIt()))
+    ..registerFactory(() => EditUserUsecase(userRepository: getIt()));
 }
