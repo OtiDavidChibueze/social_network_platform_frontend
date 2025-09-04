@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_network_platform/features/meet/domain/entities/meet_entity.dart';
-import 'package:social_network_platform/features/profile/presentation/widgets/circle_user_avatar_widget.dart';
+import '../../domain/entities/meet_entity.dart';
+import '../../../profile/presentation/widgets/circle_user_avatar_widget.dart';
 
 class LastMeetsWidget extends StatelessWidget {
   final MeetEntity meet;
