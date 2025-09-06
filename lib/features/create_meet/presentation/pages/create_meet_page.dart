@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:social_network_platform/core/common/widgets/default_button_widget.dart';
-import 'package:social_network_platform/core/common/widgets/default_text_field_widget.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../../core/common/widgets/default_button_widget.dart';
+import '../../../../core/common/widgets/default_text_field_widget.dart';
+import 'location_picker_page.dart';
 
 class CreateMeetPage extends StatefulWidget {
   static const String route = '/create_meet';
@@ -15,6 +18,7 @@ class _CreateMeetPageState extends State<CreateMeetPage> {
   final TextEditingController _meetCtrl = TextEditingController();
   final TextEditingController _descriptionCtrl = TextEditingController();
   TimeOfDay timeOfDay = TimeOfDay.now();
+  LatLng? location;
 
   @override
   Widget build(BuildContext context) {
@@ -176,15 +180,35 @@ class _CreateMeetPageState extends State<CreateMeetPage> {
       color: Colors.greenAccent.withValues(alpha: .5),
     ),
     // child: GoogleMap(
+    //   myLocationEnabled: false,
+    //   myLocationButtonEnabled: false,
+    //   compassEnabled: false,
+    //   scrollGesturesEnabled: false,
+    //   zoomControlsEnabled: false,
+    //   zoomGesturesEnabled: false,
+    //   tiltGesturesEnabled: false,
+    //   rotateGesturesEnabled: false,
+    //  onTap: (_) {
+    //   context.push(LocationPickerPage.route);
+    // },
+    //   markers: location != null
+    //       ? {Marker(markerId: MarkerId('selectedLocation'), position: location)}
+    //       : {},
     //   initialCameraPosition: CameraPosition(
     //     target: LatLng(40.730610, -73.934242),
     //     zoom: 10,
     //   ),
     // ),
-    child: Center(
-      child: Text(
-        'Api Key missing to display Google Map',
-        style: TextStyle(color: Theme.of(context).colorScheme.inverseSurface),
+    child: InkWell(
+      onTap: () {
+        context.push(LocationPickerPage.route);
+      },
+
+      child: Center(
+        child: Text(
+          'Api Key missing to display Google Map',
+          style: TextStyle(color: Theme.of(context).colorScheme.inverseSurface),
+        ),
       ),
     ),
   );

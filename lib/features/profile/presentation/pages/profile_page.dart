@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:social_network_platform/features/create_meet/presentation/pages/create_meet_page.dart';
+import '../../../create_meet/presentation/pages/create_meet_page.dart';
 import '../../../../core/di/locator.dart';
 import '../../../meet/presentation/bloc/last_meets_bloc.dart';
 import '../../../meet/presentation/bloc/last_meets_event.dart';

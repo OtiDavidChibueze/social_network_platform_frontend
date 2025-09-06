@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import '../../features/create_meet/presentation/pages/location_picker_page.dart';
 import '../../features/create_meet/presentation/pages/create_meet_page.dart';
 import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
@@ -49,6 +50,13 @@ class AppRouter {
         path: CreateMeetPage.route,
         builder: (context, state) {
           return CreateMeetPage();
+        },
+      ),
+
+      GoRoute(
+        path: LocationPickerPage.route,
+        builder: (context, state) {
+          return LocationPickerPage();
         },
       ),
     ],
