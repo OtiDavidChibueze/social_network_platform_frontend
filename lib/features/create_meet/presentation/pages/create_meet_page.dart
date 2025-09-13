@@ -70,6 +70,7 @@ class _CreateMeetPageState extends State<CreateMeetPage> {
                   minLines: 2,
                   maxLenght: 6,
                 ),
+
                 SizedBox(height: 15),
 
                 Text(

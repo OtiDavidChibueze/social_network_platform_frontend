@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:social_network_platform/features/create_meet/presentation/bloc/location_picker_bloc.dart';
 import '../../features/auth/domain/usecases/edit_user_usecase.dart';
 import '../../features/meet/data/datasource/meet_remote_datasource.dart';
 import '../../features/meet/data/repository/meet_repository_impl.dart';
@@ -35,6 +36,8 @@ void setLocator() {
   _setUser();
 
   _setMeet();
+
+  getIt.registerFactory(() => LocationPickerBloc());
 }
 
 _setAuth() {

@@ -9,3 +9,8 @@ class GetLocationEvent extends LocationPickerEvent {
   @override
   List<Object?> get props => [];
 }
+
+class SetLocationEvent extends LocationPickerEvent {
+  @override
+  List<Object?> get props => [];
+}
