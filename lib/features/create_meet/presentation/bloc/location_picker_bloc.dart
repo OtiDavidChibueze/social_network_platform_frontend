@@ -38,8 +38,15 @@ class LocationPickerBloc
     );
   }
 
-  Future<void> onSetLocationEven(
+  Future<void> onSetLocationEvent(
     SetLocationEvent event,
     Emitter<LocationPickerState> emit,
-  ) async {}
+  ) async {
+    emit(
+      state.copyWith(
+        location: event.location,
+        status: LocationPickerStatus.locationUpdated,
+      ),
+    );
+  }
 }
