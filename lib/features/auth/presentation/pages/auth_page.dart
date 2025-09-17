@@ -50,7 +50,7 @@ class AuthPage extends StatelessWidget {
                       SizedBox(height: 20),
 
                       Text(
-                        'By DhavyeScript',
+                        'By DhavyeScript Solutions',
                         style: Theme.of(context).textTheme.headlineSmall
                             ?.copyWith(
                               fontSize: 14,
@@ -59,7 +59,7 @@ class AuthPage extends StatelessWidget {
                             ),
                       ),
 
-                      SizedBox(height: 10),
+                      SizedBox(height: 20),
 
                       Expanded(
                         child: Center(child: Image.asset(AppImageUrls.group)),

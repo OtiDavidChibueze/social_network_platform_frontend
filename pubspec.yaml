@@ -42,7 +42,7 @@ dependencies:
   go_router:
   pretty_dio_logger:
   cached_network_image:
-  intl:
+  intl: ^0.20.2
   rxdart:
   geolocator:
   image_picker:

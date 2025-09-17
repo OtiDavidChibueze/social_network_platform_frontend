@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../domain/entities/meet_entity.dart';
 import '../../../profile/presentation/widgets/circle_user_avatar_widget.dart';
 
@@ -45,6 +46,10 @@ class LastMeetsWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          SizedBox(width: 15),
+
+          Text(DateFormat.yMMMd().format(meet.date).toString()),
         ],
       ),
     );

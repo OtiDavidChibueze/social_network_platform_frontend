@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:social_network_platform/features/create_meet/presentation/bloc/location_picker_bloc.dart';
+import 'package:social_network_platform/features/create_meet/presentation/bloc/create_meet/create_meet_bloc.dart';
+import 'package:social_network_platform/features/create_meet/presentation/bloc/location_picker/location_picker_bloc.dart';
+import 'package:social_network_platform/features/meet/domain/usecases/create_meet_usecase.dart';
 import '../../features/auth/domain/usecases/edit_user_usecase.dart';
 import '../../features/meet/data/datasource/meet_remote_datasource.dart';
 import '../../features/meet/data/repository/meet_repository_impl.dart';
@@ -88,5 +90,7 @@ _setMeet() {
       () => MeetRepositoryImpl(meetRemoteDatasource: getIt()),
     )
     ..registerFactory(() => GetLastMeetsUsecase(meetRepository: getIt()))
-    ..registerLazySingleton(() => LastMeetsBloc(getLastMeetsUsecase: getIt()));
+    ..registerFactory(() => CreateMeetUsecase(meetRepository: getIt()))
+    ..registerLazySingleton(() => LastMeetsBloc(getLastMeetsUsecase: getIt()))
+    ..registerLazySingleton(() => CreateMeetBloc(createMeetUsecase: getIt()));
 }
