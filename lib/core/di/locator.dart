@@ -5,12 +5,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:social_network_platform/features/create_meet/presentation/bloc/create_meet/create_meet_bloc.dart';
 import 'package:social_network_platform/features/create_meet/presentation/bloc/location_picker/location_picker_bloc.dart';
 import 'package:social_network_platform/features/meet/domain/usecases/create_meet_usecase.dart';
+import 'package:social_network_platform/features/meet/domain/usecases/get_meet_usecase.dart';
+import 'package:social_network_platform/features/meet/presentation/bloc/meet_bloc.dart';
 import '../../features/auth/domain/usecases/edit_user_usecase.dart';
 import '../../features/meet/data/datasource/meet_remote_datasource.dart';
 import '../../features/meet/data/repository/meet_repository_impl.dart';
 import '../../features/meet/domain/repository/meet_repository.dart';
 import '../../features/meet/domain/usecases/get_last_meet_usecase.dart';
-import '../../features/meet/presentation/bloc/last_meets_bloc.dart';
+import '../../features/create_meet/presentation/bloc/last_,meets/last_meets_bloc.dart';
 import '../../features/auth/domain/usecases/log_out_usecase.dart';
 import '../api/api_client.dart';
 import '../../features/auth/data/dataSources/user_remote_datasource.dart';
@@ -91,6 +93,8 @@ _setMeet() {
     )
     ..registerFactory(() => GetLastMeetsUsecase(meetRepository: getIt()))
     ..registerFactory(() => CreateMeetUsecase(meetRepository: getIt()))
+    ..registerFactory(() => GetMeetUsecase(meetRepository: getIt()))
     ..registerLazySingleton(() => LastMeetsBloc(getLastMeetsUsecase: getIt()))
-    ..registerLazySingleton(() => CreateMeetBloc(createMeetUsecase: getIt()));
+    ..registerLazySingleton(() => CreateMeetBloc(createMeetUsecase: getIt()))
+    ..registerLazySingleton(() => MeetBloc(getMeetUsecase: getIt()));
 }

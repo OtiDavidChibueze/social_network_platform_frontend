@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/meet_entity.dart';
+import '../../../../meet/domain/entities/meet_entity.dart';
 
 enum LastMeetsStatus { initial, loading, success, error }
 

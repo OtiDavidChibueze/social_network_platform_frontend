@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/usecases/get_last_meet_usecase.dart';
+import '../../../../meet/domain/usecases/get_last_meet_usecase.dart';
 import 'last_meets_event.dart';
 import 'last_meets_state.dart';
 

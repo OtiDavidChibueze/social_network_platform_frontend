@@ -13,6 +13,8 @@ abstract interface class MeetRemoteDatasource {
     required TimeOfDay time,
     required LatLng location,
   });
+
+  Future<MeetEntity> getMeet({required String meetId});
 }
 
 class MeetRemoteDatasourceImpl implements MeetRemoteDatasource {
@@ -54,6 +56,13 @@ class MeetRemoteDatasourceImpl implements MeetRemoteDatasource {
         'longitude': location.longitude,
       },
     );
+
+    return MeetEntity.fromJson(request.data);
+  }
+
+  @override
+  Future<MeetEntity> getMeet({required String meetId}) async {
+    final request = await dio.get('/meetings/$meetId');
 
     return MeetEntity.fromJson(request.data);
   }

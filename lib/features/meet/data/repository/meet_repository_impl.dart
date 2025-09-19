@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -21,6 +22,13 @@ class MeetRepositoryImpl implements MeetRepository {
       return Right(
         await meetRemoteDatasource.getLastMeets(limit: limit, page: page),
       );
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          message: e.response?.data.message['message'],
+          trace: e.stackTrace,
+        ),
+      );
     } on ServerException catch (e) {
       return Left(Failure(message: e.message, trace: e.trace));
     } catch (e) {
@@ -42,6 +50,31 @@ class MeetRepositoryImpl implements MeetRepository {
           description: description,
           time: time,
           location: location,
+        ),
+      );
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          message: e.response?.data.message['message'],
+          trace: e.stackTrace,
+        ),
+      );
+    } on ServerException catch (e) {
+      return Left(Failure(message: e.message, trace: e.trace));
+    } catch (e) {
+      return Left(Failure(message: e.toString(), trace: null));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MeetEntity>> getMeet({required String meetId}) async {
+    try {
+      return Right(await meetRemoteDatasource.getMeet(meetId: meetId));
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          message: e.response?.data.message['message'],
+          trace: e.stackTrace,
         ),
       );
     } on ServerException catch (e) {

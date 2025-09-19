@@ -15,4 +15,6 @@ abstract interface class MeetRepository {
     required TimeOfDay time,
     required LatLng location,
   });
+
+  Future<Either<Failure, MeetEntity>> getMeet({required String meetId});
 }
