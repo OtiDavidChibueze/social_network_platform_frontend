@@ -17,7 +17,23 @@ class MeetPage extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) =>
           getIt<MeetBloc>()..add(GetMeetEvent(meetId: meetId)),
-      child: Scaffold(),
+      child: BlocConsumer<MeetBloc, MeetStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          if (state.status == MeetStatus.loading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                'Meet from ${state.meet?.admin.name}},',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

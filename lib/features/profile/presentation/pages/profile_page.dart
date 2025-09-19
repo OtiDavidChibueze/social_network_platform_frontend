@@ -5,7 +5,7 @@ import '../../../create_meet/presentation/pages/create_meet_page.dart';
 import '../../../../core/di/locator.dart';
 import '../../../create_meet/presentation/bloc/last_,meets/last_meets_bloc.dart';
 import '../../../create_meet/presentation/bloc/last_,meets/last_meets_event.dart';
-import '../../../create_meet/presentation/widgets/last_meets_section.dart';
+import '../widgets/last_meets_section.dart';
 import '../../../../core/common/widgets/default_show_modal_bottom_sheet_widget.dart';
 import '../../../auth/presentation/bloc/user_bloc.dart';
 import '../../../auth/presentation/bloc/user_event.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_network_platform/features/meet/presentation/widgets/last_meets_widget.dart';
-import '../bloc/last_,meets/last_meets_bloc.dart';
-import '../bloc/last_,meets/last_meets_state.dart';
+import 'package:social_network_platform/features/profile/presentation/widgets/last_meets_widget.dart';
+import '../../../create_meet/presentation/bloc/last_,meets/last_meets_bloc.dart';
+import '../../../create_meet/presentation/bloc/last_,meets/last_meets_state.dart';
 
 class LastMeetsSection extends StatelessWidget {
   const LastMeetsSection({super.key});
